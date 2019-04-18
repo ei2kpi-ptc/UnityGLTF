@@ -23,15 +23,12 @@ steps:
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
-    restoreNugetPackages: true
     msbuildArguments: '/t:GLTFSerialization /p:Configuration=Release'
 
 - task: Bash@3
   inputs:
     targetType: filePath
     filePath: '$(upmScript)'
-
-
 
 - task: GithubRelease@0 
   displayName: 'Create GitHub Release'
