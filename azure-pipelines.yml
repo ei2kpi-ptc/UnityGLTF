@@ -23,10 +23,17 @@ steps:
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
-    restoreNugetPackages: true
-    msbuildArguments: '/t:GLTFSerialization'
+    msbuildArguments: '/t:GLTFSerialization /p:Configuration=Release'
 
 - task: Bash@3
   inputs:
     targetType: filePath
     filePath: '$(upmScript)'
+
+- task: GithubRelease@0 
+  displayName: 'Create GitHub Release'
+  inputs:
+    githubConnection: github-release
+    repositoryName: ei2kpi-ptc/UnityGLTF
+    tagSource: auto
+    assets: $(Build.SourcesDirectory)/current-package/*.zip
