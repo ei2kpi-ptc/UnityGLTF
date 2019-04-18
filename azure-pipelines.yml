@@ -28,4 +28,5 @@ steps:
 
 - task: Bash@3
   inputs:
-    script: '$(upmScript)'
+    targetType: filePath
+    filePath: '$(upmScript)'
