@@ -1,0 +1,26 @@
+# Universal Windows Platform
+# Build a Universal Windows Platform project using Visual Studio.
+# Add steps that test and distribute an app, save build artifacts, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+- releases
+
+pool:
+  vmImage: 'VS2017-Win2016'
+
+variables:
+  solution: './GLTFSerialization/GLTFSerialization.sln'
+  upmScript: './scripts/export-upm-package.sh'
+
+steps:
+- task: MSBuild@1
+  inputs:
+    solution: '$(solution)'
+    restoreNugetPackages: true
+    msbuildArguments: '/t:GLTFSerialization'
+
+- task: Bash@3
+  inputs:
+    script: '$(upmScript)'
