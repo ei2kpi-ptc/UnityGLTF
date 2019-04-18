@@ -45,7 +45,7 @@ echo "Cleaning out UWP plugin DLLs that are not needed for Unity2018.3+"
 find $upm_staging_UWP_plugins_path -maxdepth 1 -type f | grep -vE "$(IFS=\| && echo "${upm_UWP_Plugins[*]}")" | xargs rm
 
 echo "Files left in $upm_staging_UWP_plugins_path"
-for entry in "$search_dir"/*
+for entry in "$upm_staging_UWP_plugins_path"/*
 do
   echo "$entry"
 done
