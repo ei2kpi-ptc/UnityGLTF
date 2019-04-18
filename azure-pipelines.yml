@@ -15,6 +15,11 @@ variables:
   upmScript: './scripts/export-upm-package.sh'
 
 steps:
+- task: NuGetCommand@2
+  inputs:
+    command: restore
+    restoreSolution: '$(solution)'
+
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
