@@ -42,9 +42,13 @@ echo "Changing to $upm_staging_path folder"
 cd $upm_staging_path
 
 echo "Cleaning out UWP plugin DLLs that are not needed for Unity2018.3+"
-echo "Only keeping the following files:"
-printf '%s\n' "${upm_UWP_Plugins[@]}"
 find $upm_staging_UWP_plugins_path -maxdepth 1 -type f | grep -vE "$(IFS=\| && echo "${upm_UWP_Plugins[*]}")" | xargs rm
+
+echo "Files left in $upm_staging_UWP_plugins_path"
+for entry in "$upm_staging_UWP_plugins_path"/*
+do
+  echo "$entry"
+done
 
 echo "Creating .zip of UPM package"
 sudo zip -q -r $upm_zip_export_path ./
@@ -57,4 +61,3 @@ cd $cached_folder
 
 echo "Finishing with code $error_code"
 exit $error_code
-
