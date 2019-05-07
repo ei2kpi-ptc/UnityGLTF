@@ -50,6 +50,9 @@ do
   echo "$entry"
 done
 
+echo "Installing zip package"
+sudo apt-get install zip
+
 echo "Creating .zip of UPM package"
 sudo zip -q -r $upm_zip_export_path ./
 
