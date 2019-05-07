@@ -5,6 +5,7 @@ log_file=$(pwd)/build/unity-mac.log
 
 cached_folder=$(pwd)
 upm_name=org.khronos.UnityGLTF
+echo "##vso[task.setvariable variable=UPM_NAME]$upm_name)"
 upm_src_folder_path=$(pwd)/UnityGLTF/Assets/UnityGLTF
 upm_manifest_path=$(pwd)/scripts/package.json
 upm_staging_path=$(pwd)/current-package/$upm_name
