@@ -43,6 +43,7 @@ echo $upm_manifest_path
 echo $upm_staging_path
 
 echo "Creating package folder"
+rm -rf "$upm_staging_path"
 mkdir $upm_staging_path
 echo "Copying package.json"
 cp $upm_manifest_path $upm_staging_path
@@ -61,3 +62,6 @@ for entry in "$upm_staging_UWP_plugins_path"/*
 do
   echo "$entry"
 done
+
+echo "Removing Examples, Tests"
+rm -rf Examples Tests Examples.meta Tests.meta
