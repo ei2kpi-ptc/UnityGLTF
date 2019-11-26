@@ -2,6 +2,7 @@
 using GLTF.Extensions;
 using GLTF.Schema;
 using GLTF.Utilities;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,12 @@ using WrapMode = UnityEngine.WrapMode;
 
 namespace UnityGLTF
 {
+
+	public class GLTFExtras : MonoBehaviour
+	{
+		public IDictionary<string, string> Extras { get; internal set; }
+	}
+
 	public struct MeshConstructionData
 	{
 		public MeshPrimitive Primitive { get; set; }
@@ -1107,6 +1114,29 @@ namespace UnityGLTF
 				cameraObj.transform.parent = nodeObj.transform;
 			}
 			*/
+
+			if (node.Extras != null && node.Extras is Newtonsoft.Json.Linq.JObject extras)
+			{
+				Dictionary<string, string> extrasDict = new Dictionary<string, string>();
+				foreach (var prop in extras.Properties())
+				{
+					if (prop.Value.Type != JTokenType.String)
+					{
+						continue;
+					}
+
+					JValue jv = prop.Value as JValue;
+					extrasDict.Add(prop.Name, jv.Value as string);
+				}
+
+				if (extrasDict.Count > 0)
+				{
+					GLTFExtras extrasComp = nodeObj.AddComponent<GLTFExtras>();
+					extrasComp.Extras = extrasDict;
+				}
+
+			}
+
 
 			if (node.Children != null)
 			{
