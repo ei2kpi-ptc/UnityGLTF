@@ -64,4 +64,5 @@ do
 done
 
 echo "Removing Examples, Tests"
+cd "$upm_staging_path/UnityGLTF"
 rm -rf Examples Tests Examples.meta Tests.meta
