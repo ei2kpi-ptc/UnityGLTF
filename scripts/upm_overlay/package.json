@@ -1,7 +1,7 @@
 {
     "name": "org.khronos.unitygltf",
     "displayName": "Khronos GLTF Loader",
-    "version": "1.0.0",
+    "version": "ENTER_REAL_VERSION_HERE",
     "unity": "2018.3",
     "description": "Unity3D library for importing and exporting GLTF 2.0 assets. https://github.com/KhronosGroup/UnityGLTF",
     "keywords": [
@@ -11,6 +11,9 @@
       "loader"
     ],
     "author": "Khronos Group",
+    "publishConfig": {
+        "registry": "https://studio-nexus.rd1.thingworx.io/content/repositories/ptc.unity/"
+    },
     "dependencies": {
         "jillejr.newtonsoft.json-for-unity": "12.0.301"
     }
