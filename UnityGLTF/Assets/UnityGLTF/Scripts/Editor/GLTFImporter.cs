@@ -15,7 +15,13 @@ using System.Threading.Tasks;
 
 namespace UnityGLTF
 {
-    [ScriptedImporter(1, new[] { "glb" })]
+    // PTC HACK, set this importer to target .ptcglb instead of .glb so that it
+    // does not conflict with MRTK
+    // This prevents the errors from showing up in the console when opening the project.
+    // It retains the ability for PTC to use this importer if desired.
+    // Note that today we do not import GLBs as assets into a Unity Project, we load them
+    // at run time.
+    [ScriptedImporter(1, new[] { "ptcglb" })]
     public class GLTFImporter : ScriptedImporter
     {
         [SerializeField] private bool _removeEmptyRootObjects = true;
