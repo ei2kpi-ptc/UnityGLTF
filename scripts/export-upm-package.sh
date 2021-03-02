@@ -35,8 +35,6 @@ set -u
 PLUGIN_FILES_TO_KEEP=(
 	"GLTFSerialization.dll"
 	"GLTFSerialization.dll.meta"
-	"GLTFSerialization.pdb"
-        "GLTFSerialization.pdb.meta"
 )
 
 keep_plugin_file() {
