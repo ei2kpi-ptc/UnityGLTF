@@ -25,6 +25,7 @@ PluginImporter:
         Exclude Win64: 0
         Exclude WindowsStoreApps: 1
         Exclude iOS: 0
+        Exclude Lumin: 0
   - first:
       Android: Android
     second:
@@ -109,6 +110,11 @@ PluginImporter:
       settings:
         CompileFlags: 
         FrameworkDependencies: 
+  - first:
+      Lumin: Lumin
+    second:
+      enabled: 1
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
